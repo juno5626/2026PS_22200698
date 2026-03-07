@@ -23,9 +23,32 @@ int main(){
                 }
             }
         }else if(j==2){
-            for()
+            for(i =1 ; i<=size;i++){
+                for(int k =1; k<=size*2;k++){
+                    printf("*");
+                    if(k==size*2){
+                        printf("\n");
+                    }
+                }
+            }
+        }else if(j==3){
+            for(i =0 ; i<size ;i++){
+                for(int k =1; k<=size*2;k++){
+                    if(k<=i||k>size*2-i){
+                        printf(" ");
+                    }else{
+                        printf("*");
+                    }
+                    if(k==size*2){
+                        printf("\n");
+                    }
+                }
+            }
+        }else{
+            for(i = 1; i<=size*2;i++){
+                printf("*");
+            }
         }
-            
         
     }
 
