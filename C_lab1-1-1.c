@@ -2,7 +2,7 @@
 
 int main(){
 
-    
+    //test github
     int size; // 크기
     int stars, blank1, blank2; // 별의 갯수, 빈칸1의 갯수, 빈칸2의 갯수 
     int i, j; // 반복문을 위한 변수
