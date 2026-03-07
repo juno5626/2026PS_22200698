@@ -84,7 +84,9 @@ int findRoom(int persons[5]){
 void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10], int wc){
     //배정결과 출력하기
     printf("\n\n");
-    printf("남학생 호실 배정 결과\n");
+    printf("===========================================\n");
+    printf("생활관 호실 배정 결과는 다음과 같습니다.\n");
+    printf("===========================================\n");
 
     if(mc==0){
         printf("등록된 남학생이 없습니다.\n");
@@ -92,7 +94,7 @@ void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10
     }   
 
     for(int i = 0; i < mc; i++){
-        printf("%s 학생 10%d호실\n", mn[i], mr[i]+1);        
+        printf("%d. %s [10%d호]\n", i+1, mn[i], mr[i]+1);        
     }
     printf("\n");
     printf("여학생 호실 배정 결과\n");
@@ -104,8 +106,30 @@ void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10
     }   
     
     for(int i = 0; i < wc; i++){
-        printf("%s 학생 20%d호실\n", wn[i], wr[i]+1);
+        printf("%d. %s [20%d호]\n", i+1, wn[i], wr[i]+1);     
     }
+
+    printf("\n호실별 배정 명단\n");
+    for(int i = 1 ; i<3; i++){
+        for(int j = 0; j < 5; j++){
+            printf("%d0%d호 : ",i, j+1);
+            if(i==1){
+                for(int k = 0; k < mc; k++){    
+                    if(mr[k] == j){
+                        printf("%s ", mn[k]);
+                    }
+                }
+            }else{
+                for(int k = 0; k < wc; k++){    
+                    if(wr[k] == j){
+                        printf("%s ", wn[k]);   
+                    }
+                }
+            }
+            printf("\n");   
+        }
+    }   
+
 
     return;
 }
