@@ -17,6 +17,7 @@ int main() {
     int mr[10]; //남학생 호실 번호
     char wn[10][20]; //여학생 이름
     int wr[10]; //여학생 호실 번호 
+    int rooms[2][5] = {0}; //호실별 학생 수 (0: 남학생, 1: 여학생)
 
     printf("===========================================\n");
     printf("생활관 호실 배정 프로그램\n");
@@ -34,9 +35,10 @@ int main() {
             }else{
                 printf("학생 이름은? >");
                 scanf("%s", mn[mc]);
-                mr[mc] = findRoom(mr);
+                mr[mc] = findRoom(rooms[0]);
                 printf("%s 학생 10%d호실에 배정되었습니다.\n", mn[mc], mr[mc]+1);                
                 printf("\n");
+                rooms[0][mr[mc]]++;
                 mc++;
             }
         }else if(jud == 2){
@@ -47,9 +49,10 @@ int main() {
             }else{
                 printf("학생 이름은? >");
                 scanf("%s", wn[wc]);
-                wr[wc] = findRoom(wr);
+                wr[wc] = findRoom(rooms[1]);
                 printf("%s 학생 20%d호실에 배정되었습니다.\n", wn[wc], wr[wc]+1);
                 printf("\n");
+                rooms[1][wr[wc]]++;
                 wc++;
             }
         }else if(jud == 0){
@@ -72,11 +75,12 @@ int findRoom(int persons[5]){
     //배정할 호실 찾기
     srand(time(NULL)); 
     int i = rand()%5;
-    while(persons[i] >= 2){
+    while(persons[i] == 2){
         i = rand()%5;
     }
     return i;
 }
+
 void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10], int wc){
     //배정결과 출력하기
     printf("\n\n");
@@ -102,7 +106,6 @@ void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10
     for(int i = 0; i < wc; i++){
         printf("%s 학생 20%d호실\n", wn[i], wr[i]+1);
     }
-    
 
     return;
 }
