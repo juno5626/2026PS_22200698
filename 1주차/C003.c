@@ -18,39 +18,49 @@ int main() {
     char wn[10][20]; //여학생 이름
     int wr[10]; //여학생 호실 번호 
 
+    printf("===========================================\n");
+    printf("생활관 호실 배정 프로그램\n");
+    printf("===========================================\n");
+
     while(jud != 0){
-        printf("===========================================\n");
-        printf("생활관 호실 배정 프로그램\n");
-        printf("===========================================\n");
-        printf("메뉴 : 1.남학생 등록 2.여학생 등록 0.종료 >");
+        
+        printf("메뉴 : 1.남학생 등록 2.여학생 등록 3.배정 결과 출력 0.종료 >");
         scanf("%d", &jud);
         if(jud == 1){
             //남학생 등록
             if(mc >= 10){
                 printf("남은 남학생 호실이 없습니다.\n");
+                printf("\n");
             }else{
                 printf("학생 이름은? >");
                 scanf("%s", mn[mc]);
                 mr[mc] = findRoom(mr);
-                printf("%s 학생 10%d호실에 배정되었습니다.\n", mn[mc], mr[mc]);
-                mc++;   
+                printf("%s 학생 10%d호실에 배정되었습니다.\n", mn[mc], mr[mc]+1);                
+                printf("\n");
+                mc++;
             }
         }else if(jud == 2){
             //여학생 등록
             if(wc >= 10){
                 printf("남은 여학생 호실이 없습니다.\n");
+                printf("\n");
             }else{
                 printf("학생 이름은? >");
                 scanf("%s", wn[wc]);
                 wr[wc] = findRoom(wr);
-                printf("%s 학생 20%d호실에 배정되었습니다.\n", wn[wc], wr[wc]);
+                printf("%s 학생 20%d호실에 배정되었습니다.\n", wn[wc], wr[wc]+1);
+                printf("\n");
                 wc++;
             }
         }else if(jud == 0){
             printf("프로그램을 종료합니다.\n");
             break;
+        }else if(jud == 3){
+            printReport(mn, mr, mc, wn, wr, wc);
         }else{
-            printf("잘못된 입력입니다. 다시 입력해주세요.\n");       
+            printf("잘못된 입력입니다. 다시 입력해주세요.\n");   
+            printf("\n");
+       
         }
 
     }
@@ -69,7 +79,30 @@ int findRoom(int persons[5]){
 }
 void printReport(char mn[10][20], int mr[10], int mc, char wn[10][20], int wr[10], int wc){
     //배정결과 출력하기
+    printf("\n\n");
+    printf("남학생 호실 배정 결과\n");
 
+    if(mc==0){
+        printf("등록된 남학생이 없습니다.\n");
+        printf("\n");
+    }   
+
+    for(int i = 0; i < mc; i++){
+        printf("%s 학생 10%d호실\n", mn[i], mr[i]+1);        
+    }
+    printf("\n");
+    printf("여학생 호실 배정 결과\n");
+
+    if(wc==0){
+        printf("등록된 여학생이 없습니다.\n");
+        printf("\n");
+
+    }   
+    
+    for(int i = 0; i < wc; i++){
+        printf("%s 학생 20%d호실\n", wn[i], wr[i]+1);
+    }
     
 
+    return;
 }
