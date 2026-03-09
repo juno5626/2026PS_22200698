@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# build files
+*.out
+*.o
+*.exe
+
+#기타
+*.docx
+*.pdf
