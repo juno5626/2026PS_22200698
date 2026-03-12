@@ -15,13 +15,12 @@ float bmi; // 비만도 수치
 #include <stdio.h>
 
 int main(){
-    int birth_year; // 태어난 년도 
-    int age; // 나이 
+    int height, weight; // 신장(cm), 체중(kg) 
+    float bmi; // 비만도 수치 
 
-    scanf("%d",&birth_year);
-    age = 2026-birth_year;
-
-    printf("%d",age);
+    scanf("%d %d",&height,&weight);
+    bmi = weight / (height/100.0 * height/100.0);
+    printf("%.1f",bmi);
 
     return 0;
 }
