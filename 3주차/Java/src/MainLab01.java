@@ -1,10 +1,13 @@
 import java.util.Scanner;
 
+import static java.lang.Math.*;
+
+
 public class MainLab01 {
     public static void main(String[] args) {
 
         MainLab01 mainLab01 = new MainLab01();
-        mainLab01.j005();
+        mainLab01.j004();
     }
 
 
@@ -39,6 +42,19 @@ public class MainLab01 {
 
         pyung_area = m2_area/3.305;
         System.out.println(pyung_area);
+    }
+    void j004(){
+        //두 좌표의 거리 계산
+        double x1,x2,y1,y2;
+        Scanner sc = new Scanner(System.in);
+        x1 = sc.nextDouble();
+        y1 = sc.nextDouble();
+        x2 = sc.nextDouble();
+        y2 = sc.nextDouble();
+
+        double dis = sqrt(pow((x1-x2),2)+pow((y1-y2),2));
+        System.out.println(dis);
+
     }
 
     void j005(){
